@@ -5,6 +5,7 @@ import "./Weather.css";
 export default function Weather() {
 const [ready, setReady] = useState(false);
 const [weatherData, setweatherData] = useState({});
+
 function handleResponse(response) {
     setweatherData({
       temperature: response.data.main.temp,
@@ -15,6 +16,7 @@ function handleResponse(response) {
     });
     setReady(true);
   }
+
 if (ready) {
     return (
       <div className="weather">
@@ -70,8 +72,9 @@ className="float-left"
 } else {
  const apiKey  = "7633347349ec94a368e4a15d93744b30";
     let city = "Johannesburg";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}$units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}$units=metric`;
 axios.get(apiUrl).then(handleResponse);
+
     return "Loading...";
   }
 }
