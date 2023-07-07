@@ -1,7 +1,10 @@
-import React, { startTransition, useState } from "react";
+import React, {  useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 
+export default function Weather() {
+const [ready, setReady] = useState(false);
+const [weatherData, setweatherData] = useState({});
 function handleResponse(response) {
     setweatherData({
       temperature: response.data.main.temp,
@@ -12,8 +15,7 @@ function handleResponse(response) {
     });
     setReady(true);
   }
-
-  if (ready) {
+if (ready) {
     return (
       <div className="weather">
         <form>
@@ -21,7 +23,7 @@ function handleResponse(response) {
             <div className="col-9">
               <input
                 type="search"
-                placeholder="Input city..."
+                placeholder="Enter a city..."
                 className="form-control"
                 autoFocus="on"
               />
@@ -72,5 +74,5 @@ className="float-left"
 axios.get(apiUrl).then(handleResponse);
     return "Loading...";
   }
+}
 
-   
