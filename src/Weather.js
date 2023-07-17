@@ -33,7 +33,7 @@ function handleResponse(response) {
 
     function search() {
      const apiKey  = "1dbf926d3b4417bf379db7043bec1047";
-      let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}$units=metric`;
+      let apiUrl  = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
      axios.get(apiUrl).then(handleResponse);
      }
 
@@ -62,9 +62,13 @@ if (weatherData.ready) {
         </form>
         <WeatherInfo data={weatherData} />
         <WeatherForecast coordinates={weatherData.coordinates} />
-        </div>
+        <footer>
+  This project is coded by Lindelwa Tshuku and is{" "} <a href="https://github.com/Li1412/react-weather-app" target="_blank" rel="noopener noreferrer">
+     open-sourced on Github</a>
+    </footer>
+    </div>
     );
-} else {
+ } else {
   search();
 return "Loading...";
   }
